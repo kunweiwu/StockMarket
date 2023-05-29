@@ -14,3 +14,6 @@ fun CompanyListing.toCompanyListingEntity() = CompanyListingEntity(
     symbol = symbol,
     exchange = exchange
 )
+
+fun List<CompanyListingEntity>.toCompanyListings() = map { it.toCompanyListing() }
+fun List<CompanyListing>.toCompanyListingEntities() = map { it.toCompanyListingEntity() }
