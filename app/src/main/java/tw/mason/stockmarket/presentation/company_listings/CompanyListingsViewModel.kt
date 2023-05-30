@@ -58,4 +58,8 @@ class CompanyListingsViewModel constructor(
                 }
         }
     }
+
+    init {
+        getCompanyListings()
+    }
 }

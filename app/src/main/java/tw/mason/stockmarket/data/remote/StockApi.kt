@@ -1,14 +1,15 @@
 package tw.mason.stockmarket.data.remote
 
-import okhttp3.ResponseBody
+import tw.mason.stockmarket.data.remote.dto.CompanyInfoDto
+import java.io.File
 
 
 interface StockApi {
 
-    suspend fun getListings(): ResponseBody
+    suspend fun getListingsCsv(file: File): File
 
-    companion object {
+    suspend fun getIntradayInfoCsv(file: File, symbol: String): File
 
-    }
+    suspend fun getCompanyInfo(symbol: String): CompanyInfoDto
 }
 
