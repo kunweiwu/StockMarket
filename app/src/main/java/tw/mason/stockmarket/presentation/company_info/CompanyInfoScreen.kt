@@ -67,7 +67,7 @@ fun CompanyInfoScreen(
                     modifier = Modifier.fillMaxWidth()
                 )
                 Divider(modifier = Modifier.fillMaxWidth())
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = company.description,
                     fontSize = 12.sp,

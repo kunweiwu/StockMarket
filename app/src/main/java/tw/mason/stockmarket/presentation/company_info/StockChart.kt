@@ -30,14 +30,14 @@ fun StockChart(
     val transparentGraphColor = remember {
         graphColor.copy(alpha = 0.5f)
     }
-    val upperValue = remember {
+    val upperValue = remember(infoList) {
         (infoList.maxOfOrNull { it.close }?.plus(1))?.roundToInt() ?: 0
     }
-    val lowerValue = remember {
+    val lowerValue = remember(infoList) {
         infoList.minOfOrNull { it.close }?.toInt() ?: 0
     }
     val density = LocalDensity.current
-    val textPaint = remember {
+    val textPaint = remember(infoList) {
         Paint().apply {
             color = android.graphics.Color.WHITE
             textAlign = Paint.Align.CENTER
@@ -52,7 +52,7 @@ fun StockChart(
             drawContext.canvas.nativeCanvas.apply {
                 drawText(
                     hour.toString(),
-                    i * spacePerHour + spacing / 2,
+                    spacing + i * spacePerHour,
                     size.height - 5,
                     textPaint
                 )
@@ -60,7 +60,7 @@ fun StockChart(
         }
 
         val priceStep = (upperValue - lowerValue) / 5f
-        (0 until 4).forEach { i ->
+        (0..4).forEach { i ->
             drawContext.canvas.nativeCanvas.apply {
                 drawText(
                     round(lowerValue + priceStep * i).toString(),
